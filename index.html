@@ -1,1 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="MOKS AI — AI Product & Solution Design Portfolio">
+
+  <title>MOKS AI — AI Product & Solution Design</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: #f4f4f4;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 0;
+      background: rgba(8, 8, 8, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #67e8f9;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #164e63;
+      filter: blur(180px);
+      opacity: 0.25;
+      right: -200px;
+      top: 100px;
+    }
+
+    .eyebrow {
+      color: #67e8f9;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      max-width: 950px;
+      font-size: clamp(55px, 9vw, 120px);
+      line-height: 0.95;
+      letter-spacing: -6px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: #67e8f9;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      margin-top: 35px;
+      font-size: 20px;
+      color: #aaa;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 14px 24px;
+      border: 1px solid #333;
+      border-radius: 100px;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .button.primary {
+      background: #f4f4f4;
+      color: #080808;
+      border-color: #f4f4f4;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 120px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .section-label {
+      color: #67e8f9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 60px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      gap: 25px;
+    }
+
+    .project {
+      border: 1px solid #222;
+      border-radius: 24px;
+      padding: 35px;
+      background: #0d0d0d;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      border-color: #67e8f9;
+      transform: translateY(-5px);
+    }
+
+    .project-number {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 45px;
+    }
+
+    .project h3 {
+      font-size: clamp(30px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+
+    .project p {
+      color: #999;
+      max-width: 650px;
+      margin-bottom: 25px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 7px 12px;
+      border: 1px solid #292929;
+      border-radius: 50px;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    /* THINKING */
+
+    .thinking {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .thinking-item {
+      padding: 25px;
+      border: 1px solid #222;
+      border-radius: 15px;
+      background: #0c0c0c;
+    }
+
+    .thinking-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .thinking-item span {
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about h2 {
+      font-size: 42px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .about p {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding: 160px 0;
+    }
+
+    .contact h2 {
+      font-size: clamp(50px, 9vw, 110px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 35px;
+    }
+
+    .contact h2 span {
+      color: #67e8f9;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid #222;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      nav {
+        padding: 18px 0;
+      }
+
+      .hero {
+        min-height: 90vh;
+      }
+
+      .hero h1 {
+        font-size: clamp(52px, 17vw, 85px);
+        letter-spacing: -4px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .project {
+        padding: 25px;
+      }
+
+      .thinking {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .contact {
+        padding: 100px 0;
+      }
+
+      .contact h2 {
+        letter-spacing: -3px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        MOKS<span>.</span>AI
+      </a>
+
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#thinking">Thinking</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        AI Product & Solution Design
+      </div>
+
+      <h1>
+        Designing<br>
+        <span>useful</span> intelligence.
+      </h1>
+
+      <p class="hero-text">
+        I explore real-world problems, use AI to develop
+        meaningful solutions, and turn ideas into thoughtful
+        digital products and experiences.
+      </p>
+
+      <div class="hero-actions">
+
+        <a href="#work" class="button primary">
+          Explore Work →
+        </a>
+
+        <a href="#about" class="button">
+          About MOKS AI
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- SELECTED WORK -->
+
+  <section id="work">
+
+    <div class="container">
+
+      <div class="section-label">
+        Selected Work
+      </div>
+
+      <h2 class="section-title">
+        Projects built<br>
+        around problems.
+      </h2>
+
+      <div class="projects">
+
+        <!-- PROJECT 01 -->
+
+        <a href="#" class="project">
+
+          <div class="project-number">
+            01 / 2026
+          </div>
+
+          <h3>
+            Nike AI Advertising
+          </h3>
+
+          <p>
+            An AI-powered advertising campaign exploring
+            how artificial intelligence can transform
+            creative strategy, storytelling, and campaign execution.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AI</span>
+            <span class="tag">Advertising</span>
+            <span class="tag">Creative Strategy</span>
+            <span class="tag">Campaign Design</span>
+          </div>
+
+        </a>
+
+
+        <!-- PROJECT 02 -->
+
+        <a href="#" class="project">
+
+          <div class="project-number">
+            02 / 2026
+          </div>
+
+          <h3>
+            AI Healthcare System
+          </h3>
+
+          <p>
+            A connected AI healthcare ecosystem designed
+            to support patients, doctors, hospitals, and
+            operational decision-making.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AI Product</span>
+            <span class="tag">Healthcare</span>
+            <span class="tag">UX</span>
+            <span class="tag">Product Strategy</span>
+          </div>
+
+        </a>
+
+
+        <!-- FUTURE -->
+
+        <div class="project">
+
+          <div class="project-number">
+            03 / COMING NEXT
+          </div>
+
+          <h3>
+            More problems.
+          </h3>
+
+          <p>
+            New industries, new experiments, and new
+            AI-powered solutions are continuously being explored.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AI</span>
+            <span class="tag">Research</span>
+            <span class="tag">Experiments</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THINKING -->
+
+  <section id="thinking">
+
+    <div class="container">
+
+      <div class="section-label">
+        How I Think
+      </div>
+
+      <h2 class="section-title">
+        From problem<br>
+        to solution.
+      </h2>
+
+      <div class="thinking">
+
+        <div class="thinking-item">
+          <strong>01 — Problem</strong>
+          <span>Understand the real challenge.</span>
+        </div>
+
+        <div class="thinking-item">
+          <strong>02 — Research</strong>
+          <span>Explore users, context, and constraints.</span>
+        </div>
+
+        <div class="thinking-item">
+          <strong>03 — AI</strong>
+          <span>Find where intelligence can create value.</span>
+        </div>
+
+        <div class="thinking-item">
+          <strong>04 — Design</strong>
+          <span>Turn insights into useful experiences.</span>
+        </div>
+
+        <div class="thinking-item">
+          <strong>05 — Solution</strong>
+          <span>Build something meaningful.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container about">
+
+      <div>
+
+        <div class="section-label">
+          About
+        </div>
+
+        <h2>
+          I don't just design interfaces.
+        </h2>
+
+      </div>
+
+      <div>
+
+        <p>
+          I explore problems, systems, and opportunities
+          where artificial intelligence can create meaningful value.
+        </p>
+
+        <p>
+          MOKS AI is an evolving independent portfolio
+          focused on AI products, creative technology,
+          strategic thinking, and human-centered solutions.
+        </p>
+
+        <p>
+          The goal is simple:
+          build things that are useful, thoughtful,
+          and worth remembering.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container contact">
+
+      <div class="section-label">
+        Let's Build
+      </div>
+
+      <h2>
+        Have a<br>
+        <span>problem?</span>
+      </h2>
+
+      <p class="hero-text" style="margin-left:auto;margin-right:auto;">
+        Let's explore what AI could do with it.
+      </p>
+
+      <div class="hero-actions" style="justify-content:center;">
+
+        <a
+          href="mailto:your@email.com"
+          class="button primary">
+          Start a Conversation →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 MOKS AI
+      </div>
+
+      <div>
+        AI Product · Solution Design · Creative Technology
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+  </html>
