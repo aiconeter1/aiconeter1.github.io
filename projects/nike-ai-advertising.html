@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Nike AI Advertising Campaign — MOKS AI Case Study">
+
+  <title>Nike AI Advertising Campaign — MOKS AI</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: #f4f4f4;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 0;
+      background: rgba(8, 8, 8, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #67e8f9;
+    }
+
+    .back {
+      color: #999;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .case-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+    }
+
+    .eyebrow {
+      color: #67e8f9;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .case-hero h1 {
+      max-width: 1050px;
+      font-size: clamp(55px, 9vw, 120px);
+      line-height: 0.95;
+      letter-spacing: -6px;
+      font-weight: 800;
+    }
+
+    .case-hero h1 span {
+      color: #67e8f9;
+    }
+
+    .hero-description {
+      max-width: 700px;
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 20px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 35px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border: 1px solid #292929;
+      border-radius: 50px;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 120px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .section-label {
+      color: #67e8f9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      max-width: 900px;
+      font-size: clamp(40px, 6vw, 75px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 45px;
+    }
+
+    .content {
+      max-width: 760px;
+    }
+
+    .content p {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    /* PROBLEM */
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .problem-card {
+      border: 1px solid #222;
+      border-radius: 20px;
+      padding: 30px;
+      background: #0d0d0d;
+    }
+
+    .problem-card strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .problem-card p {
+      color: #777;
+      font-size: 15px;
+    }
+
+    /* PROCESS */
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .process-item {
+      padding: 25px;
+      border: 1px solid #222;
+      border-radius: 15px;
+      background: #0c0c0c;
+    }
+
+    .process-number {
+      color: #67e8f9;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .process-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .process-item span {
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* AI APPROACH */
+
+    .ai-box {
+      border: 1px solid #222;
+      border-radius: 24px;
+      padding: 45px;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(22,78,99,0.25),
+          transparent 40%
+        ),
+        #0d0d0d;
+    }
+
+    .ai-box h3 {
+      font-size: 35px;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .ai-box p {
+      max-width: 750px;
+      color: #999;
+      font-size: 18px;
+    }
+
+    /* OUTCOME */
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .outcome {
+      padding: 30px;
+      border: 1px solid #222;
+      border-radius: 20px;
+      background: #0d0d0d;
+    }
+
+    .outcome strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .outcome span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* REFLECTION */
+
+    .reflection {
+      max-width: 850px;
+    }
+
+    .reflection p {
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      color: #ddd;
+    }
+
+    /* NEXT PROJECT */
+
+    .next-project {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 40px 0;
+    }
+
+    .next-project small {
+      color: #67e8f9;
+      display: block;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .next-project h3 {
+      font-size: clamp(35px, 5vw, 60px);
+      letter-spacing: -2px;
+    }
+
+    .next-arrow {
+      font-size: 35px;
+      color: #67e8f9;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid #222;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 0;
+      }
+
+      .case-hero {
+        min-height: 90vh;
+        padding-top: 120px;
+      }
+
+      .case-hero h1 {
+        font-size: clamp(50px, 16vw, 82px);
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .ai-box {
+        padding: 28px;
+      }
+
+      .ai-box h3 {
+        font-size: 28px;
+      }
+
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection p {
+        font-size: 23px;
+      }
+
+      .next-project {
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="container nav-inner">
+
+      <a href="../index.html" class="logo">
+        MOKS<span>.</span>AI
+      </a>
+
+      <a href="../index.html#work" class="back">
+        ← Back to Work
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="case-hero">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Case Study 01 / 2026
+      </div>
+
+      <h1>
+        Nike AI<br>
+        <span>Advertising</span>
+      </h1>
+
+      <p class="hero-description">
+        An exploration of how artificial intelligence can
+        transform creative strategy, advertising systems,
+        storytelling, and campaign development.
+      </p>
+
+      <div class="meta">
+
+        <span class="tag">AI</span>
+        <span class="tag">Advertising</span>
+        <span class="tag">Creative Strategy</span>
+        <span class="tag">Campaign Design</span>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- OVERVIEW -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        01 / Overview
+      </div>
+
+      <h2 class="section-title">
+        What happens when
+        AI becomes part of
+        the creative process?
+      </h2>
+
+      <div class="content">
+
+        <p>
+          This project explores a Nike-inspired advertising
+          campaign through an AI-first creative workflow.
+        </p>
+
+        <p>
+          Instead of treating AI as a simple image-generation
+          tool, the project investigates how intelligence can
+          participate across concept development, visual
+          direction, storytelling, and campaign execution.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROBLEM -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        02 / Problem
+      </div>
+
+      <h2 class="section-title">
+        Advertising is no
+        longer just about
+        producing visuals.
+      </h2>
+
+      <div class="problem-grid">
+
+        <div class="problem-card">
+
+          <strong>Creative Complexity</strong>
+
+          <p>
+            Modern campaigns require coordination between
+            strategy, storytelling, design, production,
+            and multiple digital channels.
+          </p>
+
+        </div>
+
+        <div class="problem-card">
+
+          <strong>Speed & Iteration</strong>
+
+          <p>
+            Creative teams increasingly need to explore
+            multiple directions quickly while maintaining
+            a consistent brand idea.
+          </p>
+
+        </div>
+
+        <div class="problem-card">
+
+          <strong>Personalization</strong>
+
+          <p>
+            Audiences are fragmented across platforms,
+            creating opportunities for more adaptive
+            creative experiences.
+          </p>
+
+        </div>
+
+        <div class="problem-card">
+
+          <strong>Human Direction</strong>
+
+          <p>
+            AI can accelerate production, but meaningful
+            creative direction still depends on human
+            judgment, context, and intent.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        03 / Process
+      </div>
+
+      <h2 class="section-title">
+        From idea<br>
+        to campaign.
+      </h2>
+
+      <div class="process">
+
+        <div class="process-item">
+          <div class="process-number">01</div>
+          <strong>Research</strong>
+          <span>Understand the brand and audience.</span>
+        </div>
+
+        <div class="process-item">
+          <div class="process-number">02</div>
+          <strong>Concept</strong>
+          <span>Define the creative direction.</span>
+        </div>
+
+        <div class="process-item">
+          <div class="process-number">03</div>
+          <strong>AI</strong>
+          <span>Explore ideas through AI workflows.</span>
+        </div>
+
+        <div class="process-item">
+          <div class="process-number">04</div>
+          <strong>Design</strong>
+          <span>Turn selected ideas into campaign assets.</span>
+        </div>
+
+        <div class="process-item">
+          <div class="process-number">05</div>
+          <strong>Campaign</strong>
+          <span>Connect the system into one story.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AI APPROACH -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        04 / AI Approach
+      </div>
+
+      <div class="ai-box">
+
+        <h3>
+          AI as a creative system,
+          not just a tool.
+        </h3>
+
+        <p>
+          The central idea was to use AI across the creative
+          workflow rather than limiting it to visual generation.
+          AI can support exploration, variation, ideation,
+          visual experimentation, and rapid iteration while
+          human direction remains responsible for meaning,
+          selection, and final creative decisions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOLUTION -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        05 / Solution
+      </div>
+
+      <h2 class="section-title">
+        A connected creative
+        advertising system.
+      </h2>
+
+      <div class="content">
+
+        <p>
+          The final concept brings together creative strategy,
+          AI-assisted ideation, visual storytelling, and
+          campaign design into one coherent system.
+        </p>
+
+        <p>
+          The goal is not to replace the creative process,
+          but to expand the number of ideas that can be
+          explored and tested before committing to a direction.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OUTCOME -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        06 / Value
+      </div>
+
+      <h2 class="section-title">
+        What the system
+        makes possible.
+      </h2>
+
+      <div class="outcome-grid">
+
+        <div class="outcome">
+
+          <strong>Faster Exploration</strong>
+
+          <span>
+            More creative directions can be explored
+            during the early stages of a campaign.
+          </span>
+
+        </div>
+
+        <div class="outcome">
+
+          <strong>More Iteration</strong>
+
+          <span>
+            Concepts can evolve through rapid
+            experimentation and refinement.
+          </span>
+
+        </div>
+
+        <div class="outcome">
+
+          <strong>Scalable Creativity</strong>
+
+          <span>
+            A structured AI workflow can support
+            creative production across multiple formats.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REFLECTION -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        07 / Reflection
+      </div>
+
+      <div class="reflection">
+
+        <p>
+          The most interesting question is not
+          “What can AI generate?”
+          but rather:
+          “What becomes possible when human
+          creative thinking and machine intelligence
+          work together?”
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT PROJECT -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        Next Project
+      </div>
+
+      <a
+        href="ai-healthcare-system.html"
+        class="next-project">
+
+        <div>
+
+          <small>
+            02 / 2026
+          </small>
+
+          <h3>
+            AI Healthcare System
+          </h3>
+
+        </div>
+
+        <div class="next-arrow">
+          →
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 MOKS AI
+      </div>
+
+      <div>
+        AI Product · Solution Design · Creative Technology
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+                     </html>
