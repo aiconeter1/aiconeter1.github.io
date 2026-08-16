@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="AI Healthcare System — MOKS AI Case Study">
+
+  <title>AI Healthcare System — MOKS AI</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: #f4f4f4;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 0;
+      background: rgba(8, 8, 8, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #67e8f9;
+    }
+
+    .back {
+      color: #999;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .case-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+    }
+
+    .eyebrow {
+      color: #67e8f9;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .case-hero h1 {
+      max-width: 1050px;
+      font-size: clamp(55px, 9vw, 120px);
+      line-height: 0.95;
+      letter-spacing: -6px;
+      font-weight: 800;
+    }
+
+    .case-hero h1 span {
+      color: #67e8f9;
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 20px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 35px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border: 1px solid #292929;
+      border-radius: 50px;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 120px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .section-label {
+      color: #67e8f9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      max-width: 950px;
+      font-size: clamp(40px, 6vw, 75px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 45px;
+    }
+
+    .content {
+      max-width: 780px;
+    }
+
+    .content p {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    /* SYSTEM GRID */
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .system-card {
+      border: 1px solid #222;
+      border-radius: 20px;
+      padding: 30px;
+      background: #0d0d0d;
+      transition: 0.3s;
+    }
+
+    .system-card:hover {
+      border-color: #67e8f9;
+      transform: translateY(-4px);
+    }
+
+    .system-number {
+      color: #67e8f9;
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    .system-card strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .system-card p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* JOURNEY */
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .journey-item {
+      padding: 25px;
+      border: 1px solid #222;
+      border-radius: 15px;
+      background: #0c0c0c;
+    }
+
+    .journey-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .journey-item span {
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* AI */
+
+    .ai-box {
+      border: 1px solid #222;
+      border-radius: 24px;
+      padding: 45px;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(22,78,99,0.25),
+          transparent 40%
+        ),
+        #0d0d0d;
+    }
+
+    .ai-box h3 {
+      font-size: 35px;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .ai-box p {
+      max-width: 780px;
+      color: #999;
+      font-size: 18px;
+    }
+
+    /* WORKSPACES */
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .workspace {
+      padding: 30px;
+      border: 1px solid #222;
+      border-radius: 20px;
+      background: #0d0d0d;
+    }
+
+    .workspace strong {
+      display: block;
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .workspace span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* IMPACT */
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .impact {
+      padding: 35px;
+      border: 1px solid #222;
+      border-radius: 20px;
+      background: #0d0d0d;
+    }
+
+    .impact strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .impact span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* ROADMAP */
+
+    .roadmap {
+      max-width: 850px;
+      border-left: 1px solid #333;
+      margin-top: 50px;
+    }
+
+    .roadmap-item {
+      padding: 0 0 45px 35px;
+      position: relative;
+    }
+
+    .roadmap-item::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #67e8f9;
+    }
+
+    .roadmap-item strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .roadmap-item span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* REFLECTION */
+
+    .reflection {
+      max-width: 850px;
+    }
+
+    .reflection p {
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      color: #ddd;
+    }
+
+    /* NEXT */
+
+    .next-project {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 40px 0;
+    }
+
+    .next-project small {
+      color: #67e8f9;
+      display: block;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .next-project h3 {
+      font-size: clamp(35px, 5vw, 60px);
+      letter-spacing: -2px;
+    }
+
+    .next-arrow {
+      font-size: 35px;
+      color: #67e8f9;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid #222;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 0;
+      }
+
+      .case-hero {
+        min-height: 90vh;
+        padding-top: 120px;
+      }
+
+      .case-hero h1 {
+        font-size: clamp(50px, 16vw, 82px);
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .system-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey {
+        grid-template-columns: 1fr;
+      }
+
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ai-box {
+        padding: 28px;
+      }
+
+      .ai-box h3 {
+        font-size: 28px;
+      }
+
+      .reflection p {
+        font-size: 23px;
+      }
+
+      .next-project {
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="container nav-inner">
+
+      <a href="../index.html" class="logo">
+        MOKS<span>.</span>AI
+      </a>
+
+      <a href="../index.html#work" class="back">
+        ← Back to Work
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="case-hero">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Case Study 02 / 2026
+      </div>
+
+      <h1>
+        AI Healthcare<br>
+        <span>System</span>
+      </h1>
+
+      <p class="hero-description">
+        A connected AI healthcare ecosystem designed to
+        support patients, doctors, hospitals, and operational
+        decision-making through intelligent digital systems.
+      </p>
+
+      <div class="meta">
+
+        <span class="tag">AI Product</span>
+        <span class="tag">Healthcare</span>
+        <span class="tag">UX</span>
+        <span class="tag">Product Strategy</span>
+        <span class="tag">Systems Design</span>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- OVERVIEW -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        01 / Overview
+      </div>
+
+      <h2 class="section-title">
+        What if healthcare
+        could become more
+        connected?
+      </h2>
+
+      <div class="content">
+
+        <p>
+          Healthcare is not a single experience.
+          It is an interconnected system involving patients,
+          doctors, hospitals, administrators, data, and
+          operational decisions.
+        </p>
+
+        <p>
+          This project explores how AI could connect these
+          different layers into one intelligent healthcare
+          ecosystem.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROBLEM -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        02 / Problem
+      </div>
+
+      <h2 class="section-title">
+        Healthcare information
+        is often fragmented.
+      </h2>
+
+      <div class="system-grid">
+
+        <div class="system-card">
+
+          <div class="system-number">01</div>
+
+          <strong>Patient Experience</strong>
+
+          <p>
+            Patients may need to navigate multiple
+            disconnected steps, services, and sources
+            of information.
+          </p>
+
+        </div>
+
+        <div class="system-card">
+
+          <div class="system-number">02</div>
+
+          <strong>Doctor Workflow</strong>
+
+          <p>
+            Doctors spend valuable time reviewing
+            information and administrative tasks
+            alongside clinical work.
+          </p>
+
+        </div>
+
+        <div class="system-card">
+
+          <div class="system-number">03</div>
+
+          <strong>Hospital Operations</strong>
+
+          <p>
+            Operational teams need visibility across
+            capacity, resources, schedules, and
+            organizational performance.
+          </p>
+
+        </div>
+
+        <div class="system-card">
+
+          <div class="system-number">04</div>
+
+          <strong>Data Complexity</strong>
+
+          <p>
+            Healthcare generates large amounts of
+            information that can be difficult to
+            transform into useful decisions.
+          </p>
+
+        </div>
+
+        <div class="system-card">
+
+          <div class="system-number">05</div>
+
+          <strong>Decision Support</strong>
+
+          <p>
+            Better access to relevant information can
+            help professionals make more informed
+            operational and clinical decisions.
+          </p>
+
+        </div>
+
+        <div class="system-card">
+
+          <div class="system-number">06</div>
+
+          <strong>System Coordination</strong>
+
+          <p>
+            The greatest opportunity may come from
+            connecting these experiences instead of
+            optimizing each one separately.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RESEARCH -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        03 / User Research
+      </div>
+
+      <h2 class="section-title">
+        Four perspectives.
+        One ecosystem.
+      </h2>
+
+      <div class="content">
+
+        <p>
+          The system was explored from four major
+          perspectives: patient, doctor, hospital,
+          and hospital operations.
+        </p>
+
+      </div>
+
+      <div class="journey">
+
+        <div class="journey-item">
+          <strong>Patient</strong>
+          <span>
+            Access care, understand information,
+            and manage the healthcare journey.
+          </span>
+        </div>
+
+        <div class="journey-item">
+          <strong>Doctor</strong>
+          <span>
+            Review information and focus more
+            attention on patient care.
+          </span>
+        </div>
+
+        <div class="journey-item">
+          <strong>Hospital</strong>
+          <span>
+            Coordinate services, resources,
+            and patient flow.
+          </span>
+        </div>
+
+        <div class="journey-item">
+          <strong>Operations</strong>
+          <span>
+            Monitor performance and identify
+            operational opportunities.
+          </span>
+        </div>
+
+        <div class="journey-item">
+          <strong>AI Layer</strong>
+          <span>
+            Connect information and surface
+            useful insights across the system.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AI OPPORTUNITIES -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        04 / AI Opportunities
+      </div>
+
+      <div class="ai-box">
+
+        <h3>
+          AI as an intelligence layer
+          across the ecosystem.
+        </h3>
+
+        <p>
+          The concept uses AI to summarize information,
+          identify patterns, support workflows, surface
+          relevant insights, and help different users
+          interact with complex healthcare systems.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCT EXPERIENCES -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        05 / Product Experience
+      </div>
+
+      <h2 class="section-title">
+        One system.
+        Multiple experiences.
+      </h2>
+
+      <div class="workspace-grid">
+
+        <div class="workspace">
+
+          <strong>AI Patient App</strong>
+
+          <span>
+            A patient-facing experience for appointments,
+            information, communication, and personalized
+            healthcare support.
+          </span>
+
+        </div>
+
+        <div class="workspace">
+
+          <strong>AI Doctor Workspace</strong>
+
+          <span>
+            A professional workspace designed to help
+            doctors access relevant information and
+            reduce unnecessary administrative friction.
+          </span>
+
+        </div>
+
+        <div class="workspace">
+
+          <strong>AI Hospital Dashboard</strong>
+
+          <span>
+            A centralized operational interface for
+            monitoring hospital activity, resources,
+            capacity, and performance.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ECOSYSTEM -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        06 / Ecosystem
+      </div>
+
+      <h2 class="section-title">
+        Connecting the
+        healthcare system.
+      </h2>
+
+      <div class="content">
+
+        <p>
+          The core idea is not a single application.
+          It is an ecosystem in which different interfaces
+          share an intelligent underlying layer.
+        </p>
+
+        <p>
+          Patients, doctors, hospitals, and operational
+          teams interact with different parts of the system
+          while remaining connected through data,
+          workflows, and AI-supported insights.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUSINESS IMPACT -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        07 / Business Impact
+      </div>
+
+      <h2 class="section-title">
+        Designing for
+        human and business value.
+      </h2>
+
+      <div class="impact-grid">
+
+        <div class="impact">
+
+          <strong>Efficiency</strong>
+
+          <span>
+            Reduce repetitive administrative work
+            and improve operational visibility.
+          </span>
+
+        </div>
+
+        <div class="impact">
+
+          <strong>Experience</strong>
+
+          <span>
+            Create clearer and more connected
+            experiences for patients and professionals.
+          </span>
+
+        </div>
+
+        <div class="impact">
+
+          <strong>Decision Support</strong>
+
+          <span>
+            Transform complex information into
+            more accessible insights.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ROADMAP -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        08 / Future Roadmap
+      </div>
+
+      <h2 class="section-title">
+        Where could the
+        system go next?
+      </h2>
+
+      <div class="roadmap">
+
+        <div class="roadmap-item">
+
+          <strong>Phase 01 — Foundation</strong>
+
+          <span>
+            Establish the core patient, doctor,
+            and hospital experiences.
+          </span>
+
+        </div>
+
+        <div class="roadmap-item">
+
+          <strong>Phase 02 — Intelligence</strong>
+
+          <span>
+            Introduce deeper AI-supported analytics,
+            recommendations, and workflow assistance.
+          </span>
+
+        </div>
+
+        <div class="roadmap-item">
+
+          <strong>Phase 03 — Ecosystem</strong>
+
+          <span>
+            Connect healthcare organizations and
+            intelligent services into a broader platform.
+          </span>
+
+        </div>
+
+        <div class="roadmap-item">
+
+          <strong>Phase 04 — Scale</strong>
+
+          <span>
+            Explore interoperability, partnerships,
+            and expansion into additional healthcare contexts.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REFLECTION -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        09 / Reflection
+      </div>
+
+      <div class="reflection">
+
+        <p>
+          The most valuable role for AI in healthcare
+          may not be replacing people, but helping
+          people understand complex systems,
+          reduce unnecessary friction, and make
+          better-informed decisions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BACK TO WORK -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        Continue Exploring
+      </div>
+
+      <a
+        href="../index.html#work"
+        class="next-project">
+
+        <div>
+
+          <small>
+            MOKS AI
+          </small>
+
+          <h3>
+            ← Back to Selected Work
+          </h3>
+
+        </div>
+
+        <div class="next-arrow">
+          →
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 MOKS AI
+      </div>
+
+      <div>
+        AI Product · Solution Design · Creative Technology
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+          </html>
